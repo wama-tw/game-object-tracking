@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['Boo', 'Luigi', 'Peach', 'Shy Guy', 'obstacle', 'rolling stone']
+
+roboflow:
+  workspace: partygame4all
+  project: granite-getaway
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/partygame4all/granite-getaway/dataset/2
