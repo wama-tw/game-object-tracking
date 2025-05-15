@@ -22,14 +22,14 @@ It focuses on tracking **specific game characters with fixed IDs** — including
 
 ```
 
-.
+/fine-tune
 ├── test/
 │   └── Gameplay.mp4               # Input video
-├── output\_tracked/
+├── output_tracked/
 │   └── 20240515-conf0.4.mp4       # Output video with tracked boxes
 ├── runs/
 │   └── detect/train14/weights/    # Your YOLOv8 trained model
-├── yolov8\_fixedid\_bytetrack.py   # Main tracking script
+├── yolov8_fixedid_bytetrack.py    # Main tracking script
 
 ```
 
@@ -40,15 +40,13 @@ It focuses on tracking **specific game characters with fixed IDs** — including
 ### 1. Install dependencies
 
 ```bash
-pip install ultralytics
-pip install lap cython_bbox filterpy
-pip install git+https://github.com/ifzhang/ByteTrack.git
+pip install -r requirements.txt
 ```
 
 ### 2. Place your fine-tuned YOLOv8 model at:
 
 ```
-runs/detect/train14/weights/best.pt
+runs/detect/trainX/weights/best.pt
 ```
 
 ### 3. Put your input video here:
@@ -60,6 +58,7 @@ runs/detect/train14/weights/best.pt
 ### 4. Run the tracker
 
 ```bash
+cd fine-tune/
 python yolov8_fixedid_bytetrack.py
 ```
 
@@ -88,7 +87,7 @@ names:
 
 ## 📈 Example Output
 
-![Tracking example](./docs/tracking_example.gif)  <!-- Optional: Replace with your own frame GIF or video -->
+![Tracking example](./example-output.gif)  <!-- Optional: Replace with your own frame GIF or video -->
 
 ---
 
