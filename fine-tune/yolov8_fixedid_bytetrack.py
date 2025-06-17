@@ -4,10 +4,13 @@ from yolox.tracker.byte_tracker import BYTETracker
 import numpy as np
 from types import SimpleNamespace
 from datetime import datetime
+import os
 
 CONF = 0.4
 current_time = datetime.now().strftime("%Y%m%d%H%M")
-OUTPUT_PATH = f"./output_tracked/{current_time}-conf{CONF}.mp4"
+OUTPUT_FOLDER = f"./output_tracked/"
+os.makedirs(os.path.dirname(OUTPUT_FOLDER), exist_ok=True)  # ✅ 確保資料夾存在
+OUTPUT_PATH = f"{OUTPUT_FOLDER}/{current_time}-conf{CONF}.mp4"
 
 # 指定要追蹤的類別
 FIXED_IDS = {
@@ -79,7 +82,8 @@ while True:
     if obstacle_dets:
         print(f"[{frame_id}] obstacle dets: {len(obstacle_dets)}")
         print("obstacle boxes:", obstacle_dets)
-        online_targets = tracker.update(np.array(obstacle_dets), (height, width), (height, width))
+        obstacle_dets = np.array(obstacle_dets, dtype=np.float64)
+        online_targets = tracker.update(obstacle_dets, (height, width), (height, width))
         print(f"→ ByteTrack output: {len(online_targets)} targets")
         for track in online_targets:
             tlwh = track.tlwh

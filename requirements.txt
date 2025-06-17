@@ -60,5 +60,5 @@ tzdata==2025.2
 ultralytics==8.3.132
 ultralytics-thop==2.0.14
 urllib3==2.2.3
-yolox==0.1.0
+# yolox==0.1.0
 zipp==3.20.2
